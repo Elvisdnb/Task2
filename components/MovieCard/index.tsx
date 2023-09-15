@@ -19,13 +19,14 @@ export type MovieCardType = {
 const MovieCard = (props: MovieCardType ) => {
   const router = useRouter();
   return (
-    <div 
+    <div
+      data-testid="movie-card"
       className="movie-card d-flex flex-column gap-3 position-relative" 
       onClick={() => {
         router.push('/movies/' + props.id);
       }}
     >
-      <img src={'https://image.tmdb.org/t/p/w220_and_h330_face' + props.img} alt="thumbnail" width={250} height={370}/>
+      <img data-testid="movie-poster" src={'https://image.tmdb.org/t/p/w220_and_h330_face' + props.img} alt="thumbnail" width={250} height={370}/>
       {props.category && (
         <div className="movie-category">{props.category}</div>
       )}
@@ -39,7 +40,7 @@ const MovieCard = (props: MovieCardType ) => {
         <InterestIcon />
       </div>
       <div className="movie-info">{props.description}</div>
-      <div className="movie-title">{props.title}</div>
+      <div data-testid="movie-title" className="movie-title">{props.title}</div>
       <div className="w-100">
         <CompanyInfo 
           rank={parseFloat(props.rank).toFixed(1)}
